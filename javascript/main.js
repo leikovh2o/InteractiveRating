@@ -5,16 +5,11 @@ const ratingBtns = document.querySelectorAll(".rating-btn");
 const selectedRating = document.getElementById("selected-btn");
 let rating = 0;
 
-submit.addEventListener('click', submitResponse);
 
 ratingBtns.forEach(btn => {
   btn.addEventListener('click', handleRatingBtnClick);
 })
 
-function submitResponse(){
-  selectionTab.classList.add('hidden');
-  thankyouTab.classList.add('active');
-}
 
 function handleRatingBtnClick(event){
   ratingBtns.forEach(btn => {
@@ -26,9 +21,17 @@ function handleRatingBtnClick(event){
   }else{
     event.target.parentElement.classList.add("active");
   }
-
-
+  
   rating = event.target.textContent;
   
   selectedRating.innerHTML = "You selected " + rating + " out of 5";
+
+  submit.addEventListener('click', submitResponse);
+
+  function submitResponse(){
+    selectionTab.classList.add('hidden');
+    thankyouTab.classList.add('active');
+  }
+  
+
 }
